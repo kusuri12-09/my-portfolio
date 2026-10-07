@@ -16,3 +16,7 @@
 .project-stack{margin:24px 0 35px;gap:14px}.article h3{font-size:18px;font-weight:600;margin:30px 0 12px;line-height:1.6}.project-stack .skill-icon{width:52px;height:52px}
 
 .hero h1 strong{font-size:1.5em;letter-spacing:.03em;font-weight:750}
+
+.art-entrydsm:before{background-image:linear-gradient(rgba(15,20,28,.55),rgba(15,20,28,.55)),url("assets/entrydsm.png");background-size:cover;background-position:center}.art-modev:before{background-image:linear-gradient(rgba(15,20,28,.55),rgba(15,20,28,.55)),url("assets/modev.png");background-size:cover;background-position:center}.art-hear:before{background-image:linear-gradient(rgba(15,20,28,.55),rgba(15,20,28,.55)),url("assets/hear.png");background-size:cover;background-position:center}
+.project-art,.project-art .art-label{color:white}
+.project-art:before{content:"";position:absolute;inset:0;z-index:-1}
