@@ -13,7 +13,7 @@ const expected = [
       "대덕소프트웨어마이스터고등학교는 10년이라는 기간동안 Entry의 시스템을 이용해 온라인으로 원서를 접수해왔습니다. 전국 각지에서 입학을 희망하는 지원자들이 먼 길 오지 않고 원서를 지원할 수 있게 도와줍니다.",
       "지원자 뿐만 아니라 선생님들의 업무도 함께 줄어들었습니다. 수기로 원서를 관리하는 방식에서, EntryDSM 서비스를 통해 웹에서 원서를 관리할 수 있습니다.",
       "기술 스택",
-      "Kotlin, Spring Boot, Resilience4j, MySQL, Redis, bazel, Docker, GitHub Actions, AWS EC2/S3",
+      "Kotlin Spring Boot Resilience4j MySQL Redis bazel Docker GitHub Actions AWS EC2/S3",
       "주요 기능",
       "온라인 입학 원서 접수: 지원자가 웹에서 입학 원서를 작성하고 접수할 수 있는 기능",
       "입학 원서 PDF 출력: 웹에서 작성한 원서를 PDF 문서로 변환",
@@ -61,7 +61,7 @@ const expected = [
       "AI와 대화하며 하루를 돌아보고, 일기로 남기는 AI 다이어리 서비스",
       "Hear는 하루를 돌아보고 기록하고 싶은 사용자를 위한 다이어리 서비스입니다. AI와 함께 하루를 회고하고, 회고 내용을 바탕으로 일기를 자동으로 작성해 주는 기능을 지원합니다.",
       "기술 스택",
-      "Kotlin, Spring Boot, WebClient, Kotlin Coroutines, PostgreSQL, Redis, Docker, GitHub Actions, AWS EC2/S3",
+      "Kotlin Spring Boot WebClient Kotlin Coroutines PostgreSQL Redis Docker GitHub Actions AWS EC2/S3",
       "주요 기능",
       "AI 채팅: 하루 회고 및 일기에 작성할 내용을 추출하는 기능",
       "AI 일기 작성: 회고 내용을 바탕으로 AI가 일기를 작성하는 기능",
@@ -105,7 +105,7 @@ const expected = [
       "MoDev는 초보 개발자가 복잡한 프로젝트 초기 설정과 의존성 버전 호환성 선택을 쉽게 진행할 수 있도록 돕는 서비스입니다.",
       "주 이용자는 대덕소프트웨어마이스터고등학교 1학년 학생과, 개발을 시작하고 싶지만 프로젝트 구성 방법에 어려움을 겪는 입문자입니다. 초기 환경 구성의 부담을 줄이고, 기능 개발을 설정 문제 없이 시작할 수 있도록 돕는 것이 목표입니다.",
       "기술 스택",
-      "Kotlin, Spring Boot, python, FastAPI, PostgreSQL, Redis, Docker, Nginx, GitHub Actions, AWS EC2/S3",
+      "Kotlin Spring Boot python FastAPI PostgreSQL Redis Docker Nginx GitHub Actions AWS EC2/S3",
       "주요 기능",
       "프로젝트 초기 세팅 자동화: 개발을 시작할 때 필요한 프로젝트 구성 과정을 간소화",
       "의존성 버전 선택 지원: 의존성 간 버전 호환성을 고려한 선택을 지원해 설정 부담 완화",
@@ -135,7 +135,7 @@ const expected = [
     ]
   }
 ];
-const plain = s => s.replace(/<[^>]*>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
+const plain = s => s.replace(/<img\b[^>]*alt="([^"]*)"[^>]*>/g, ' $1 ').replace(/<[^>]*>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
 for (const page of expected) {
  const html = fs.readFileSync(path.join(__dirname, page.file), 'utf8');
  const text = plain(html);
