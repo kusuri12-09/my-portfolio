@@ -1,0 +1,12 @@
+{
+  "name": "kusuri-portfolio",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/server.js",
+    "pdf": "node scripts/export-pdf.js",
+    "test": "node check.js && node scripts/server.js --test"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}

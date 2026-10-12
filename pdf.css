@@ -1,0 +1,79 @@
+@page { size: A4; margin: 14mm; }
+* { box-sizing: border-box; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+body { background: white; color: #212529; font-size: 10.5pt; line-height: 1.65; }
+main { width: auto; max-width: none; padding: 0; margin: 0; }
+.section { padding: 0 0 7mm; border: 0; }
+.section-top { margin-bottom: 5mm; }
+.section-top { break-after: avoid; }
+.projects { break-before: page; }
+.section-top h2 { font-size: 22pt; margin-top: 2mm; }
+.eyebrow { font-size: 8pt; }
+.about-grid { grid-template-columns: 38mm 1fr; gap: 8mm; }
+.about-person { display: block; }
+.profile-image { width: 25mm; height: 25mm; }
+.about-person h3 { font-size: 17pt; margin: 3mm 0 1mm; }
+.about-person p { font-size: 9pt; }
+.about-content { grid-template-columns: 30mm 1fr; gap: 3mm 5mm; }
+.about-content h2,.about-content p,.about-content li { font-size: 10pt; margin: 0; }
+.about-content p { grid-column: 2; }
+.about-content h2:last-of-type { grid-row: 4 / span 2; }
+.about-content p:last-child { margin-top: 0; }
+.about-content h2:last-of-type { grid-row: 4; }
+.about-content p:first-of-type { grid-column: 1; grid-row: 5; }
+.about-content p:last-child { grid-column: 2; grid-row: 5; }
+.skill-grid { grid-template-columns: 1fr 1fr; gap: 4mm 7mm; }
+.skill-item { padding: 3mm 0; }
+.skill-item h3 { font-size: 11pt; margin: 0; }
+.skill-icons { gap: 3mm; margin-top: 2mm; }
+.skill-icon,.project-stack .skill-icon { width: 9mm; height: 9mm; }
+.skill-icon img { width: 6mm; height: 6mm; }
+.project-card { grid-template-columns: 62mm 1fr; gap: 6mm; padding: 5mm 0; break-inside: avoid; }
+.project-art { min-height: 42mm; padding: 5mm; }
+.art-title { font-size: 25pt; }
+.art-caption { font-size: 6pt; letter-spacing: .06em; }
+.art-arrow { font-size: 17pt; bottom: 3mm; right: 4mm; }
+.project-info { padding: 0; }
+.project-info h3 { font-size: 18pt; margin: 1mm 0; }
+.project-description { font-size: 10pt; margin: 2mm 0; }
+.team,.project-meta { font-size: 8pt; }
+.team { margin: 1mm 0; }
+.projects .project-info { line-height: 1.4; }
+.projects .text-link { padding-top: 1mm; }
+.projects .project-description { margin: 1mm 0; }
+.project-result { margin: 2mm 0; padding-left: 3mm; }
+.project-result p { font-size: 10pt; }
+.tags { margin: 2mm 0; gap: 2mm; }
+.tags span { font-size: 7pt; padding: 1mm 2mm; }
+.text-link { font-size: 9pt; margin-top: 1mm; }
+.pdf-project { break-before: page; }
+.detail-hero { padding: 0 0 5mm; }
+.detail-hero h1 { font-size: 28pt; margin: 2mm 0; }
+.detail-description { font-size: 12pt; }
+.detail-meta { font-size: 9pt; margin: 3mm 0; }
+.detail-summary { padding: 3mm 4mm; margin-top: 4mm; break-inside: avoid; }
+.detail-summary li { font-size: 9pt; margin: 0; }
+.article { max-width: none; font-size: 10.5pt; }
+.pdf-section { break-inside: avoid; }
+.article h2 { font-size: 16pt; margin: 7mm 0 3mm; padding-bottom: 2mm; break-after: avoid; }
+.article h3 { font-size: 12pt; break-after: avoid; }
+.article p,.article li { font-size: 10.5pt; line-height: 1.65; margin-bottom: 2mm; orphans: 3; widows: 3; }
+.article li { break-inside: avoid; }
+.article blockquote { font-size: 11pt; padding: 3mm 4mm; margin: 4mm 0; break-inside: avoid; break-after: avoid; }
+.article ul { margin: 3mm 0; }
+.project-stack { margin: 3mm 0; }
+.contact { break-inside: avoid; margin-top: 8mm; }
+.projects .text-link { display: none; }
+.pdf-ending { break-before: page; min-height: 268mm; display: flex; flex-direction: column; }
+.pdf-ending .contact { margin-top: auto; padding-top: 12mm; padding-bottom: 0; }
+.contact-grid { grid-template-columns: 1fr 1fr; gap: 6mm; }
+.contact h2 { font-size: 20pt; }
+.article .contact h2 { border-bottom: 0; }
+.contact-links > a > span { display: none; }
+.contact-links>a { font-size: 13pt; }
+.contact a { color: #212529; text-decoration: none; }
+.socials { font-size: 9pt; }
+.small-note { font-size: 8pt; }
+a { overflow-wrap: anywhere; }
+.project-art,.project-art:before,.project-art * { transition: none !important; transform: none !important; }
+
+.detail-title{gap:5mm;margin:3mm 0;break-inside:avoid}.detail-title h1{margin:0}.project-logo{width:20mm;height:20mm;border-radius:2mm}

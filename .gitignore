@@ -1,2 +1,4 @@
 AGENTS.md
 _site/
+node_modules/
+output/
