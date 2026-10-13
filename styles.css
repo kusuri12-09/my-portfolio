@@ -28,3 +28,7 @@
 .project-info h3 a{transition:color .25s ease}.project-info h3 a:is(:hover,:focus-visible){color:var(--blue)}@media(prefers-reduced-motion:reduce){.project-info h3 a{transition:none}}
 
 .detail-title{display:flex;align-items:center;gap:22px;margin:20px 0}.detail-title h1{margin:0}.project-logo{width:96px;height:96px;object-fit:contain;flex-shrink:0;border-radius:8px}@media(max-width:560px){.detail-title{gap:14px}.project-logo{width:64px;height:64px}}
+
+.experiment-table{width:100%;border-collapse:collapse;font-size:14px;margin:24px 0}.experiment-table th,.experiment-table td{border:1px solid var(--line);padding:12px;text-align:left;overflow-wrap:anywhere}.experiment-table th{background:#eef0f3;font-weight:600}@media(max-width:560px){.experiment-table{font-size:12px}.experiment-table th,.experiment-table td{padding:8px}}
+
+.article .pr-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}.pr-link img{width:18px;height:18px}.article .pr-link:is(:hover,:focus-visible){color:var(--blue)}
