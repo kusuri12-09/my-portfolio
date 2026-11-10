@@ -27,8 +27,9 @@ jobs:
         run: node check.js
       - name: Prepare public site files
         run: |
-          mkdir -p _site
+          mkdir -p _site/manual
           cp index.html entrydsm.html modev.html hear.html styles.css script.js _site/
+          cp manual/index.html _site/manual/
           cp -R assets _site/
           touch _site/.nojekyll
       - name: Configure Pages

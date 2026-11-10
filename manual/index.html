@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>국승리 | 자기소개</title>
+        <meta name="description" content="백엔드 개발자 국승리의 자기소개" />
+        <style>
+            :root {
+                --ink: #151515;
+                --paper: #faf8ef;
+                --yellow: #ffe329;
+                --line: 3px solid var(--ink);
+                color: var(--ink);
+                background: var(--paper);
+                font-family: Arial, "Malgun Gothic", sans-serif;
+            }
+            * { box-sizing: border-box; }
+            body { margin: 0; }
+            a { color: inherit; }
+            a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+            .wrap { width: min(100% - 48px, 1280px); margin-inline: auto; }
+            .site-header { border-bottom: var(--line); }
+            .topbar, .footer .wrap {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            .topbar { min-height: 76px; padding-block: 12px; }
+            .brand { font: 900 clamp(1.5rem, 3vw, 2rem)/1 Arial, sans-serif; letter-spacing: -.09em; }
+            .topbar a { text-decoration: none; font-weight: 800; }
+            .button {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                min-height: 44px;
+                padding: 8px 14px;
+                border: var(--line);
+                box-shadow: 4px 4px var(--ink);
+                background: var(--yellow);
+                font-weight: 800;
+                text-decoration: none;
+                transition: transform .14s, box-shadow .14s;
+            }
+            .button:hover, .button:active { transform: translate(3px, 3px); box-shadow: 1px 1px var(--ink); }
+            .hero {
+                --effect-cycle: 6.3s;
+                --effect-delay: .25s;
+                display: grid;
+                grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+                align-items: center;
+                gap: clamp(32px, 5vw, 84px);
+                padding-block: clamp(48px, 8vw, 120px);
+            }
+            .ticker, .footer { font: 700 .8rem/1.5 Consolas, monospace; }
+            .hero h1 {
+                margin: 0 0 24px;
+                font-size: clamp(2.55rem, 7.1vw, 7rem);
+                font-weight: 950;
+                letter-spacing: -.085em;
+                line-height: 1.04;
+                white-space: nowrap;
+            }
+            .hero h1 span {
+                display: inline-block;
+                padding: 0 .14em .08em .07em;
+                background: linear-gradient(var(--yellow), var(--yellow)) left / 100% 100% no-repeat;
+                animation: highlight var(--effect-cycle) var(--effect-delay) ease-in-out infinite backwards;
+            }
+            @keyframes highlight {
+                0% { background-size: 0 100%; }
+                14%, 100% { background-size: 100% 100%; }
+            }
+            .hero p { margin: 0 0 24px; font-size: clamp(1.05rem, 2vw, 1.5rem); font-weight: 700; }
+            @property --column-depth {
+                syntax: "<number>";
+                inherits: true;
+                initial-value: 18;
+            }
+            .hero-art {
+                display: block;
+                width: 100%;
+                overflow: visible;
+            }
+            .hero-tile {
+                animation: tile-lift var(--effect-cycle) calc(var(--effect-delay) + var(--step) * .21s) ease-in-out infinite;
+            }
+            .tile-top {
+                transform: translate(calc((18 - var(--column-depth)) * 1px), calc((18 - var(--column-depth)) * 1px));
+            }
+            .tile-front {
+                transform: translate(18px, 148px) skewX(45deg) scaleY(var(--column-depth));
+            }
+            .tile-side {
+                transform: translate(178px, 18px) skewY(45deg) scaleX(var(--column-depth));
+            }
+            @keyframes tile-lift {
+                0%, 13%, 100% { --column-depth: 18; }
+                7%, 8% { --column-depth: 38; }
+            }
+            .ticker {
+                position: relative;
+                overflow: hidden;
+                color: var(--yellow);
+                background: var(--ink);
+                font-size: clamp(.75rem, 1.2vw, 1rem);
+            }
+            .ticker-track {
+                display: flex;
+                width: max-content;
+                animation: ticker-right 28s linear infinite;
+            }
+            .ticker-group {
+                --ticker-gap: clamp(14px, 5vw, 80px);
+                display: flex;
+                flex: none;
+                align-items: center;
+                justify-content: space-around;
+                min-width: 100vw;
+                gap: var(--ticker-gap);
+                padding: 14px calc(var(--ticker-gap) / 2);
+                white-space: nowrap;
+            }
+            @keyframes ticker-right {
+                from { transform: translateX(-50%); }
+                to { transform: translateX(0); }
+            }
+            .ticker-toggle {
+                position: absolute;
+                z-index: 1;
+                inset: 0 0 0 auto;
+                min-width: 44px;
+                border: 0;
+                color: inherit;
+                background: var(--ink);
+                cursor: pointer;
+            }
+            .ticker-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+            .ticker-toggle[aria-pressed="true"] + .ticker-track,
+            body:has(.ticker-toggle[aria-pressed="true"]) :is(.hero h1 span, .hero-tile) { animation-play-state: paused; }
+            .ticker-toggle[aria-pressed="false"] .play,
+            .ticker-toggle[aria-pressed="true"] .pause { display: none; }
+            .section { padding-block: clamp(42px, 7vw, 96px); border-bottom: var(--line); }
+            .section > * { width: min(100% - 48px, 1280px); margin-inline: auto; }
+            .section h2 {
+                margin-block: 0 24px;
+                font-size: clamp(2.2rem, 5vw, 5rem);
+                font-weight: 950;
+                letter-spacing: -.09em;
+                line-height: 1.12;
+            }
+            .section p { line-height: 1.75; word-break: keep-all; }
+            .section p { margin: 0; }
+            #intro h2 { font-size: clamp(2rem, 4.5vw, 4.5rem); }
+            #intro p { font-size: 1.125rem; }
+            #intro p + p { margin-top: 1em; }
+            #contact { background: var(--yellow); }
+            .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
+            .contact-links .button { background: var(--paper); overflow-wrap: anywhere; }
+            .footer { background: var(--ink); color: var(--paper); padding-block: 20px; }
+            .back-to-top {
+                position: fixed;
+                z-index: 2;
+                right: max(16px, env(safe-area-inset-right));
+                bottom: max(16px, env(safe-area-inset-bottom));
+                width: 44px;
+                justify-content: center;
+                padding: 0;
+                border-color: var(--paper);
+                box-shadow: 4px 4px var(--paper);
+                color: var(--ink);
+                font-size: 1.4rem;
+            }
+            .back-to-top:hover, .back-to-top:active { box-shadow: 1px 1px var(--paper); }
+            .back-to-top:focus-visible { outline-color: var(--paper); }
+            @media (max-width: 680px) {
+                .wrap, .section > * { width: calc(100% - 36px); }
+                .hero { grid-template-columns: 1fr; }
+                .hero-art { max-width: 420px; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .button { transition: none; }
+                .hero h1 span, .hero-tile, .ticker-track { animation: none; }
+                .ticker-toggle, .ticker-separator, .ticker-group[aria-hidden="true"] { display: none; }
+                .ticker-track { width: 100%; }
+                .ticker-group { min-width: 0; width: 100%; flex-wrap: wrap; }
+            }
+        </style>
+    </head>
+    <body id="top">
+        <header class="site-header">
+            <div class="topbar wrap">
+                <a class="brand" href="#top">KUSURI12</a>
+                <a class="button" href="#contact">연락처 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg></a>
+            </div>
+        </header>
+        <div class="hero wrap">
+            <div>
+                <h1>백엔드 개발자<br /><span>국승리</span></h1>
+                <p>오래 버티는 서비스를 고민합니다.</p>
+                <a class="button" href="#intro">소개 보기 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 4 8 8M6 12h6V6" /></svg></a>
+            </div>
+            <svg class="hero-art" viewBox="0 0 498 408" aria-hidden="true">
+                <defs>
+                    <g id="grid-art">
+                        <rect width="480" height="390" fill="#ffe329" />
+                        <path d="M0 0H160L0 130ZM320 0H480V130H320ZM0 260H160V390H0ZM320 260H480L320 390Z" fill="#151515" />
+                        <path d="M160 130H320V260H160ZM320 130H480L320 260Z" fill="#faf8ef" />
+                        <circle cx="240" cy="65" r="49" fill="#faf8ef" stroke="#151515" stroke-width="3" />
+                        <circle cx="80" cy="195" r="49" fill="#151515" />
+                        <path d="M218 171L191 195L218 219M262 171L289 195L262 219M252 161L228 229" fill="none" stroke="#151515" stroke-width="9" />
+                        <path d="M346 97L453 30M366 102L457 46M341 81L431 25" stroke="#ffe329" stroke-width="4" />
+                        <path d="M39 326H121M80 285V367M51 297L109 355M109 297L51 355" stroke="#ffe329" stroke-width="7" />
+                        <path d="M181 365L240 284L299 365Z" fill="#151515" />
+                    </g>
+                </defs>
+                <g class="hero-tile" transform="translate(0 0)" style="--step: 0">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="0 0 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(160 0)" style="--step: 3">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="160 0 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(320 0)" style="--step: 7">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="320 0 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(0 130)" style="--step: 2">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="0 130 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(160 130)" style="--step: 6">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="160 130 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(320 130)" style="--step: 1">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="320 130 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(0 260)" style="--step: 5">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="0 260 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(160 260)" style="--step: 4">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="160 260 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+                <g class="hero-tile" transform="translate(320 260)" style="--step: 8">
+                    <path class="tile-side" d="M0 0H-1V130H0Z" fill="#242424" />
+                    <path class="tile-front" d="M0 0V-1H160V0Z" fill="#39352a" />
+                    <svg class="tile-top" width="160" height="130" viewBox="320 260 160 130">
+                        <use href="#grid-art" />
+                    </svg>
+                </g>
+            </svg>
+        </div>
+        <div class="ticker" role="group" aria-label="자기소개 키워드">
+            <button class="ticker-toggle" type="button" aria-label="반복 애니메이션 일시 정지" aria-pressed="false">
+                <svg class="pause" width="12" height="12" viewBox="0 0 12 12" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2v8M8 2v8" /></svg>
+                <svg class="play" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 1.5v9L10 6Z" /></svg>
+            </button>
+            <div class="ticker-track">
+                <div class="ticker-group">
+                    <span>실행력</span><span aria-hidden="true">✦</span>
+                    <span>집요함</span><span aria-hidden="true">✦</span>
+                    <span>성장</span><span aria-hidden="true">✦</span>
+                    <span>창의성</span><span class="ticker-separator" aria-hidden="true">✦</span>
+                </div>
+                <div class="ticker-group" aria-hidden="true">
+                    <span>실행력</span><span aria-hidden="true">✦</span>
+                    <span>집요함</span><span aria-hidden="true">✦</span>
+                    <span>성장</span><span aria-hidden="true">✦</span>
+                    <span>창의성</span><span class="ticker-separator" aria-hidden="true">✦</span>
+                </div>
+            </div>
+        </div>
+        <main id="main">
+            <section class="section" id="intro">
+                <h2>자기소개</h2>
+                <div>
+                    <p>안녕하세요, 국승리입니다.</p>
+                    <p>승리란 무엇일까요?</p>
+                    <p>누군가에게는 경쟁에서 이기는 것이고, 누군가에게는 목표를 달성하는 것입니다.</p>
+                    <p>하지만 제가 생각하는 승리는 조금 다릅니다.</p>
+                    <p>어제 해결하지 못했던 문제를 오늘 해결하는 것, 어제보다 한 가지라도 더 알아가는&nbsp;것입니다.</p>
+                    <p>저는 남을 이기는 사람보다, 어제의 저를 이기는 사람이 되고 싶습니다.</p>
+                    <p>그렇게 매일 작은 승리를 쌓아가는 사람, 국승리입니다.</p>
+                </div>
+            </section>
+            <section class="section" id="contact">
+                <h2 lang="en">Contact</h2>
+                <div>
+                    <ul class="contact-links">
+                        <li><a class="button" href="mailto:waterfail12@naver.com">waterfail12@naver.com</a></li>
+                        <li><a class="button" href="https://github.com/kusuri12-09">GitHub</a></li>
+                        <li><a class="button" href="../index.html">포트폴리오</a></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="wrap">
+                <span>국승리</span>
+            </div>
+        </footer>
+        <a class="button back-to-top" href="#top" aria-label="맨 위로"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" /></svg></a>
+        <script>
+            const tickerToggle = document.querySelector(".ticker-toggle");
+            tickerToggle.addEventListener("click", () => {
+                const isPaused = tickerToggle.getAttribute("aria-pressed") === "true";
+                tickerToggle.setAttribute("aria-pressed", String(!isPaused));
+            });
+        </script>
+    </body>
+</html>
