@@ -227,11 +227,37 @@
             .profile img { object-fit: cover; }
             .profile strong { font-size: 1.25rem; }
             .section-label { margin-bottom: 8px; font-weight: 700; letter-spacing: .08em; }
+            #intro { --about-top-space: clamp(56px, 8vw, 112px); padding-top: var(--about-top-space); }
             .about-layout {
                 display: grid;
                 grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
                 align-items: start;
                 gap: clamp(24px, 4vw, 56px);
+            }
+            @media (min-width: 681px) and (min-height: 650px) {
+                #intro.about-scroll {
+                    padding: 0;
+                    min-height: calc(100dvh + var(--about-travel, 0px) + 99px);
+                }
+                .about-scroll .about-stage {
+                    position: sticky;
+                    top: 0;
+                    display: grid;
+                    grid-template-rows: auto auto minmax(0, 1fr);
+                    height: 100dvh;
+                    padding-block: var(--about-top-space) 24px;
+                }
+                .about-scroll .about-viewport {
+                    align-self: stretch;
+                    margin-top: calc(-1 * var(--about-list-inset, 0px));
+                    padding-top: var(--about-list-inset, 0px);
+                    overflow: hidden;
+                }
+                .about-scroll .about-details {
+                    min-height: calc(100dvh - 24px);
+                    align-content: start;
+                    padding-bottom: 32px;
+                }
             }
             .about-details { display: grid; gap: 28px; }
             .about-details h3 {
@@ -448,52 +474,56 @@
         </div>
         <main id="main">
             <section class="section" id="intro">
-                <div class="section-label" lang="en">ABOUT ME</div>
-                <h2>소개</h2>
-                <div class="about-layout">
-                    <div>
-                        <div class="profile">
-                            <img src="../assets/profile.jpg" width="120" height="120" alt="시나모롤 프로필 이미지" loading="lazy" />
-                            <div><strong>국승리</strong><br /><span lang="en">Backend Developer</span></div>
+                <div class="about-stage">
+                    <div class="section-label" lang="en">ABOUT ME</div>
+                    <h2>소개</h2>
+                    <div class="about-layout">
+                        <div class="about-profile">
+                            <div class="profile">
+                                <img src="../assets/profile.jpg" width="120" height="120" alt="시나모롤 프로필 이미지" loading="lazy" />
+                                <div><strong>국승리</strong><br /><span lang="en">Backend Developer</span></div>
+                            </div>
+                            <div class="intro-copy">
+                                <p>
+                                    승리란 무엇일까요?<br />
+                                    경쟁에서 승리하는 것? 목표를 달성하는 것?<br />
+                                    저에게 승리는 어제 해결하지 못한 일을, 오늘은 해결하는 것입니다.<br />
+                                    매일 작은 승리를 쌓아서, 어제의 나보다 더 나은 내가 되고자 합니다.
+                                </p>
+                            </div>
                         </div>
-                        <div class="intro-copy">
-                            <p>
-                                승리란 무엇일까요?<br />
-                                경쟁에서 승리하는 것? 목표를 달성하는 것?<br />
-                                저에게 승리는 어제 해결하지 못한 일을, 오늘은 해결하는 것입니다.<br />
-                                매일 작은 승리를 쌓아서, 어제의 나보다 더 나은 내가 되고자 합니다.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="about-details">
-                        <div>
-                            <h3><span class="about-number" aria-hidden="true">01</span>수상 경력 <small lang="en">/ AWARDS</small></h3>
-                            <ul class="award-list">
-                                <li><span class="award-event">제 1회 SCSC 온라인 해커톤 (2025)</span><span>2위</span></li>
-                                <li><span class="award-event">수서 청소년 메이커 경진대회(YOUTH MAKER) (2026)</span><span>장려상</span></li>
-                                <li><span class="award-event">SW마이스터고 연합 해커톤 (2026)</span><span>인기상</span></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3><span class="about-number" aria-hidden="true">02</span>대외 활동 <small lang="en">/ ACTIVITIES</small></h3>
-                            <ul class="activity-list">
-                                <li>Build with AI Hackathon 참가 (2026)</li>
-                                <li>GEEKs Hackathon 참가 (2026)</li>
-                                <li>「신입인데 만렙입니다」(vooy) 참가 (2026)</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3><span class="about-number" aria-hidden="true">03</span>자격증 <small lang="en">/ CERTIFICATIONS</small></h3>
-                            <ul class="certification-list">
-                                <li><span class="about-date">프로그래밍기능사 (2025.07.04)</span><span>한국산업인력공단</span></li>
-                                <li><span class="about-date">SQLD (2026.06.19)</span><span>한국데이터산업진흥원</span></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3><span class="about-number" aria-hidden="true">04</span>학력 <small lang="en">/ EDUCATION</small></h3>
-                            <ul class="education-list">
-                                <li><span class="about-date">2025.03 ~ 재학 중</span><span>대덕소프트웨어마이스터고등학교 인공지능소프트웨어과</span></li>
-                            </ul>
+                        <div class="about-viewport">
+                            <div class="about-details">
+                                <div>
+                                    <h3><span class="about-number" aria-hidden="true">01</span>수상 경력 <small lang="en">/ AWARDS</small></h3>
+                                    <ul class="award-list">
+                                        <li><span class="award-event">제 1회 SCSC 온라인 해커톤 (2025)</span><span>2위</span></li>
+                                        <li><span class="award-event">수서 청소년 메이커 경진대회(YOUTH MAKER) (2026)</span><span>장려상</span></li>
+                                        <li><span class="award-event">SW마이스터고 연합 해커톤 (2026)</span><span>인기상</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3><span class="about-number" aria-hidden="true">02</span>대외 활동 <small lang="en">/ ACTIVITIES</small></h3>
+                                    <ul class="activity-list">
+                                        <li>Build with AI Hackathon 참가 (2026)</li>
+                                        <li>GEEKs Hackathon 참가 (2026)</li>
+                                        <li>「신입인데 만렙입니다」(vooy) 참가 (2026)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3><span class="about-number" aria-hidden="true">03</span>자격증 <small lang="en">/ CERTIFICATIONS</small></h3>
+                                    <ul class="certification-list">
+                                        <li><span class="about-date">프로그래밍기능사 (2025.07.04)</span><span>한국산업인력공단</span></li>
+                                        <li><span class="about-date">SQLD (2026.06.19)</span><span>한국데이터산업진흥원</span></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3><span class="about-number" aria-hidden="true">04</span>학력 <small lang="en">/ EDUCATION</small></h3>
+                                    <ul class="education-list">
+                                        <li><span class="about-date">2025.03 ~ 재학 중</span><span>대덕소프트웨어마이스터고등학교 인공지능소프트웨어과</span></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -596,6 +626,28 @@
         <a class="button back-to-top" href="#top" aria-label="맨 위로"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" /></svg></a>
         <div class="copy-toast" role="status"></div>
         <script>
+            const about = document.querySelector("#intro");
+            const aboutStage = about.querySelector(".about-stage");
+            const aboutProfile = about.querySelector(".about-profile");
+            const aboutViewport = about.querySelector(".about-viewport");
+            const aboutDetails = about.querySelector(".about-details");
+
+            function syncAboutScroll() {
+                aboutViewport.scrollTop = Math.max(0, -about.getBoundingClientRect().top);
+            }
+
+            about.classList.add("about-scroll");
+            const aboutResize = new ResizeObserver(() => {
+                const inset = aboutProfile.getBoundingClientRect().top - aboutStage.getBoundingClientRect().top;
+                about.style.setProperty("--about-list-inset", inset + "px");
+                const travel = aboutViewport.scrollHeight - aboutViewport.clientHeight;
+                about.style.setProperty("--about-travel", travel + "px");
+                syncAboutScroll();
+            });
+            aboutResize.observe(aboutViewport);
+            aboutResize.observe(aboutDetails);
+            window.addEventListener("scroll", syncAboutScroll, { passive: true });
+
             const copyEmail = document.querySelector(".copy-email");
             const copyToast = document.querySelector(".copy-toast");
             let toastTimeout;
