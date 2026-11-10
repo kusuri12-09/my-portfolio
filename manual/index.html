@@ -3,17 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>국승리 | 자기소개</title>
+        <title>국승리 | 백엔드 개발자 포트폴리오</title>
         <meta name="description" content="백엔드 개발자 국승리의 자기소개" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
         <style>
             :root {
+                scroll-behavior: smooth;
                 --ink: #151515;
                 --paper: #faf8ef;
                 --yellow: #ffe329;
                 --line: 3px solid var(--ink);
                 color: var(--ink);
                 background: var(--paper);
-                font-family: Arial, "Malgun Gothic", sans-serif;
+                font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             }
             * { box-sizing: border-box; }
             body { margin: 0; }
@@ -54,12 +56,12 @@
                 gap: clamp(32px, 5vw, 84px);
                 padding-block: clamp(48px, 8vw, 120px);
             }
-            .ticker, .footer { font: 700 .8rem/1.5 Consolas, monospace; }
+            .ticker { font: 700 .8rem/1.5 Consolas, monospace; }
             .hero h1 {
                 margin: 0 0 24px;
                 font-size: clamp(2.55rem, 7.1vw, 7rem);
                 font-weight: 950;
-                letter-spacing: -.085em;
+                letter-spacing: -.035em;
                 line-height: 1.04;
                 white-space: nowrap;
             }
@@ -146,20 +148,137 @@
             .section > * { width: min(100% - 48px, 1280px); margin-inline: auto; }
             .section h2 {
                 margin-block: 0 24px;
-                font-size: clamp(2.2rem, 5vw, 5rem);
+                font-size: clamp(2rem, 4.5vw, 4.5rem);
                 font-weight: 950;
                 letter-spacing: -.09em;
                 line-height: 1.12;
             }
             .section p { line-height: 1.75; word-break: keep-all; }
             .section p { margin: 0; }
-            #intro h2 { font-size: clamp(2rem, 4.5vw, 4.5rem); }
-            #intro p { font-size: 1.125rem; }
-            #intro p + p { margin-top: 1em; }
-            #contact { background: var(--yellow); }
+            #contact h2 { letter-spacing: -.035em; }
+            #intro h2 { font-size: clamp(1.8rem, 4vw, 4rem); }
+            .intro-copy { font-size: 1rem; }
+            .intro-copy { margin-top: 28px; }
+            .portfolio-nav, .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+            .portfolio-nav a:not(.button) { padding-block: 10px; }
+            .portfolio-nav a:not(.button):hover { text-decoration: underline; }
+            .portfolio-grid { display: grid; gap: 16px; }
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+            .project-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr)); }
+            .portfolio-card {
+                min-width: 0;
+                border: var(--line);
+                box-shadow: 4px 4px var(--ink);
+                background: var(--paper);
+            }
+            .portfolio-card h3 { margin: 0; font-size: clamp(1.25rem, 2.3vw, 2rem); }
+            .skills-grid .portfolio-card h3 { font-size: 1.125rem; overflow-wrap: anywhere; }
+            .portfolio-card h3 a { text-underline-offset: .18em; }
+            .project-grid .portfolio-card {
+                display: grid;
+                position: relative;
+                transition: transform .14s, box-shadow .14s;
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-rows: subgrid;
+                grid-row: span 5;
+            }
+            .project-grid h3 a::after { content: ""; position: absolute; inset: 0; }
+            @media (hover: hover) {
+                .project-grid .portfolio-card:hover { transform: translate(2px, 2px); box-shadow: 2px 2px var(--ink); }
+            }
+            .project-grid .portfolio-card:active { transform: translate(4px, 4px); box-shadow: none; }
+            .project-grid .card-copy {
+                grid-template-rows: subgrid;
+                grid-row: span 4;
+            }
+            .card-copy { display: grid; align-content: start; gap: 12px; padding: clamp(16px, 2vw, 24px); }
+            .project-art {
+                display: grid;
+                align-content: center;
+                gap: 8px;
+                width: 100%;
+                min-height: 190px;
+                padding: 22px;
+                aspect-ratio: 16 / 9;
+                border-bottom: var(--line);
+                color: white;
+                background: var(--ink) center / cover no-repeat;
+            }
+            .project-art strong { font-size: clamp(2rem, 3.6vw, 3.5rem); line-height: 1; }
+            .project-art small { font-size: .65rem; letter-spacing: .12em; }
+            .art-entrydsm { background-image: linear-gradient(#0f141c99, #0f141c99), url("../assets/entrydsm.png"); }
+            .art-modev { background-image: linear-gradient(#0f141c99, #0f141c99), url("../assets/modev.png"); }
+            .art-hear { background-image: linear-gradient(#0f141c99, #0f141c99), url("../assets/hear.png"); }
+            .project-result { display: grid; align-content: center; border-left: 4px solid var(--ink); padding: 6px 10px; background: var(--yellow); }
+            .project-tags { font-size: .9rem; }
+            main > .section { background: white; }
+            main > .section:nth-child(even) { background: var(--yellow); }
+            .profile {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                margin-bottom: 24px;
+            }
+            .profile img { object-fit: cover; }
+            .profile strong { font-size: 1.25rem; }
+            .section-label { margin-bottom: 8px; font-weight: 700; letter-spacing: .08em; }
+            .about-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+                align-items: start;
+                gap: clamp(24px, 4vw, 56px);
+            }
+            .about-details { display: grid; gap: 28px; }
+            .about-details h3 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 0 4px 10px 0;
+                border: 2px solid var(--ink);
+                box-shadow: 4px 4px var(--ink);
+                background: var(--paper);
+                font-size: 1.125rem;
+            }
+            .about-number { padding: 8px 10px; color: white; background: var(--ink); }
+            .about-details h3 small { font-size: .7rem; }
+            .about-details ul { margin: 0; padding: 0; list-style: none; }
+            .about-details li {
+                display: grid;
+                grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+                gap: 12px;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--ink);
+                font-size: .9rem;
+                line-height: 1.55;
+                overflow-wrap: anywhere;
+            }
+            .award-list li { grid-template-columns: minmax(0, 1fr) 4rem; }
+            .certification-list li { grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); }
+            .activity-list li { display: block; }
+            .education-list li { grid-template-columns: max-content minmax(0, 1fr); }
+            .education-list .about-date { white-space: nowrap; }
+            .about-date, .award-event { border-right: 1px solid var(--ink); padding-right: 10px; }
+            .skill-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(100%, 15rem); gap: 12px; margin: 0; padding: 0; list-style: none; }
+            .skill-list li { display: grid; justify-items: center; align-content: start; text-align: center; gap: 6px; font-size: .75rem; }
+            .skill-list img { object-fit: contain; }
+            .skill-list .kotlin-icon { clip-path: polygon(0 0, 100% 0, 50% 50%, 100% 100%, 0 100%); }
             .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
             .contact-links .button { background: var(--paper); overflow-wrap: anywhere; }
-            .footer { background: var(--ink); color: var(--paper); padding-block: 20px; }
+            .copy-email { color: inherit; font-family: inherit; font-size: inherit; cursor: pointer; }
+            .copy-toast:not(:empty) {
+                position: fixed;
+                z-index: 3;
+                left: 50%;
+                bottom: 24px;
+                transform: translateX(-50%);
+                width: max-content;
+                max-width: calc(100% - 48px);
+                padding: 10px 16px;
+                color: white;
+                background: var(--ink);
+            }
+            .footer { font-size: .8rem; font-weight: 700; line-height: 1.5; background: var(--ink); color: var(--paper); padding-block: 20px; }
             .back-to-top {
                 position: fixed;
                 z-index: 2;
@@ -177,11 +296,13 @@
             .back-to-top:focus-visible { outline-color: var(--paper); }
             @media (max-width: 680px) {
                 .wrap, .section > * { width: calc(100% - 36px); }
-                .hero { grid-template-columns: 1fr; }
+                .hero, .about-layout { grid-template-columns: 1fr; }
                 .hero-art { max-width: 420px; }
             }
             @media (prefers-reduced-motion: reduce) {
-                .button { transition: none; }
+                :root { scroll-behavior: auto; }
+                .button, .project-grid .portfolio-card { transition: none; }
+                .project-grid .portfolio-card:hover, .project-grid .portfolio-card:active { transform: none; }
                 .hero h1 span, .hero-tile, .ticker-track { animation: none; }
                 .ticker-toggle, .ticker-separator, .ticker-group[aria-hidden="true"] { display: none; }
                 .ticker-track { width: 100%; }
@@ -193,14 +314,22 @@
         <header class="site-header">
             <div class="topbar wrap">
                 <a class="brand" href="#top">KUSURI12</a>
-                <a class="button" href="#contact">연락처 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg></a>
+                <nav class="portfolio-nav" aria-label="주요 메뉴">
+                    <a href="#intro">소개</a>
+                    <a href="#skills">기술</a>
+                    <a href="#projects">프로젝트</a>
+                    <a class="button" href="#contact">연락처 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg></a>
+                </nav>
             </div>
         </header>
         <div class="hero wrap">
             <div>
                 <h1>백엔드 개발자<br /><span>국승리</span></h1>
                 <p>오래 버티는 서비스를 고민합니다.</p>
-                <a class="button" href="#intro">소개 보기 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 4 8 8M6 12h6V6" /></svg></a>
+                <div class="hero-actions">
+                    <a class="button" href="#intro">소개 보기 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 4 8 8M6 12h6V6" /></svg></a>
+                    <a class="button" href="#projects">프로젝트 보기 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3v10m-5-5 5 5 5-5" /></svg></a>
+                </div>
             </div>
             <svg class="hero-art" viewBox="0 0 498 408" aria-hidden="true">
                 <defs>
@@ -287,7 +416,7 @@
                 <svg class="play" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 1.5v9L10 6Z" /></svg>
             </button>
             <div class="ticker-track">
-                <div class="ticker-group">
+                <!-- <div class="ticker-group">
                     <span>실행력</span><span aria-hidden="true">✦</span>
                     <span>집요함</span><span aria-hidden="true">✦</span>
                     <span>성장</span><span aria-hidden="true">✦</span>
@@ -298,29 +427,154 @@
                     <span>집요함</span><span aria-hidden="true">✦</span>
                     <span>성장</span><span aria-hidden="true">✦</span>
                     <span>창의성</span><span class="ticker-separator" aria-hidden="true">✦</span>
+                </div> -->
+                <div class="ticker-group">
+                    <span>Execution</span><span aria-hidden="true">✦</span>
+                    <span>Persistence</span><span aria-hidden="true">✦</span>
+                    <span>Growth</span><span aria-hidden="true">✦</span>
+                    <span>Creativity</span><span class="ticker-separator" aria-hidden="true">✦</span>
+                </div>
+                <div class="ticker-group" aria-hidden="true">
+                    <span>Execution</span><span aria-hidden="true">✦</span>
+                    <span>Persistence</span><span aria-hidden="true">✦</span>
+                    <span>Growth</span><span aria-hidden="true">✦</span>
+                    <span>Creativity</span><span class="ticker-separator" aria-hidden="true">✦</span>
                 </div>
             </div>
         </div>
         <main id="main">
             <section class="section" id="intro">
-                <h2>자기소개</h2>
-                <div>
-                    <p>안녕하세요, 국승리입니다.</p>
-                    <p>승리란 무엇일까요?</p>
-                    <p>누군가에게는 경쟁에서 이기는 것이고, 누군가에게는 목표를 달성하는 것입니다.</p>
-                    <p>하지만 제가 생각하는 승리는 조금 다릅니다.</p>
-                    <p>어제 해결하지 못했던 문제를 오늘 해결하는 것, 어제보다 한 가지라도 더 알아가는&nbsp;것입니다.</p>
-                    <p>저는 남을 이기는 사람보다, 어제의 저를 이기는 사람이 되고 싶습니다.</p>
-                    <p>그렇게 매일 작은 승리를 쌓아가는 사람, 국승리입니다.</p>
+                <div class="section-label" lang="en">ABOUT ME</div>
+                <h2>소개</h2>
+                <div class="about-layout">
+                    <div>
+                        <div class="profile">
+                            <img src="../assets/profile.jpg" width="120" height="120" alt="시나모롤 프로필 이미지" loading="lazy" />
+                            <div><strong>국승리</strong><br /><span lang="en">Backend Developer</span></div>
+                        </div>
+                        <div class="intro-copy">
+                            <p>매일 작은 승리를 쌓아서, 어제의 나보다 더 나은 내가 되고자 합니다.</p>
+                        </div>
+                    </div>
+                    <div class="about-details">
+                        <div>
+                            <h3><span class="about-number" aria-hidden="true">01</span>수상 경력 <small lang="en">/ AWARDS</small></h3>
+                            <ul class="award-list">
+                                <li><span class="award-event">제 1회 SCSC 온라인 해커톤 (2025)</span><span>2위</span></li>
+                                <li><span class="award-event">수서 청소년 메이커 경진대회(YOUTH MAKER) (2026)</span><span>장려상</span></li>
+                                <li><span class="award-event">SW마이스터고 연합 해커톤 (2026)</span><span>인기상</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3><span class="about-number" aria-hidden="true">02</span>대외 활동 <small lang="en">/ ACTIVITIES</small></h3>
+                            <ul class="activity-list">
+                                <li>Build with AI Hackathon 참가 (2026)</li>
+                                <li>GEEKs Hackathon 참가 (2026)</li>
+                                <li>「신입인데 만렙입니다」(vooy) 참가 (2026)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3><span class="about-number" aria-hidden="true">03</span>자격증 <small lang="en">/ CERTIFICATIONS</small></h3>
+                            <ul class="certification-list">
+                                <li><span class="about-date">프로그래밍기능사 (2025.07.04)</span><span>한국산업인력공단</span></li>
+                                <li><span class="about-date">SQLD (2026.06.19)</span><span>한국데이터산업진흥원</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3><span class="about-number" aria-hidden="true">04</span>학력 <small lang="en">/ EDUCATION</small></h3>
+                            <ul class="education-list">
+                                <li><span class="about-date">2025.03 ~ 재학 중</span><span>대덕소프트웨어마이스터고등학교 인공지능소프트웨어과</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="skills">
+                <div class="section-label" lang="en">TECH STACK</div>
+                <h2>기술 스택</h2>
+                <div class="portfolio-grid skills-grid">
+                    <div class="portfolio-card card-copy">
+                        <h3 lang="en">Language</h3>
+                        <ul class="skill-list">
+                            <li><img class="kotlin-icon" src="../assets/kotlin-reference.png" width="44" height="44" alt="" loading="lazy" />Kotlin</li>
+                            <li><img src="../assets/java.svg" width="44" height="44" alt="" loading="lazy" />Java</li>
+                            <li><img src="../assets/python.svg" width="44" height="44" alt="" loading="lazy" />Python</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card card-copy">
+                        <h3 lang="en">Framework/Library</h3>
+                        <ul class="skill-list">
+                            <li><img src="../assets/spring.svg" width="44" height="44" alt="" loading="lazy" />Spring Boot</li>
+                            <li><img src="../assets/jpa.svg" width="44" height="44" alt="" loading="lazy" />JPA</li>
+                            <li><img src="../assets/fastapi.svg" width="44" height="44" alt="" loading="lazy" />FastAPI</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card card-copy">
+                        <h3 lang="en">Database</h3>
+                        <ul class="skill-list">
+                            <li><img src="../assets/mysql.svg" width="44" height="44" alt="" loading="lazy" />MySQL</li>
+                            <li><img src="../assets/postgresql.svg" width="44" height="44" alt="" loading="lazy" />PostgreSQL</li>
+                            <li><img src="../assets/redis.svg" width="44" height="44" alt="" loading="lazy" />Redis</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card card-copy">
+                        <h3 lang="en">Infra</h3>
+                        <ul class="skill-list">
+                            <li><img src="../assets/docker.svg" width="44" height="44" alt="" loading="lazy" />Docker</li>
+                            <li><img src="../assets/amazonwebservices.svg" width="44" height="44" alt="" loading="lazy" />AWS EC2</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="projects">
+                <div class="section-label" lang="en">PROJECTS</div>
+                <h2>프로젝트</h2>
+                <div class="portfolio-grid project-grid">
+                    <article class="portfolio-card">
+                        <div class="project-art art-entrydsm" aria-hidden="true">
+                            <strong>EntryDSM</strong>
+                            <small>ONLINE ADMISSION SYSTEM</small>
+                        </div>
+                        <div class="card-copy">
+                            <h3><a href="../entrydsm.html">EntryDSM</a></h3>
+                            <p>대덕소프트웨어마이스터고등학교 온라인 원서 접수 시스템</p>
+                            <p class="project-result"><strong>지원자 약 120명 규모의 원서 접수 서비스 운영</strong></p>
+                            <p class="project-tags">Kotlin · Spring Boot · Resilience4j · MySQL</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-card">
+                        <div class="project-art art-modev" aria-hidden="true">
+                            <strong>MoDev</strong>
+                            <small>PROJECT SETUP AUTOMATION</small>
+                        </div>
+                        <div class="card-copy">
+                            <h3><a href="../modev.html">MoDev</a></h3>
+                            <p>프로젝트 초기 설정을 자동화하는 서비스</p>
+                            <p class="project-result"><strong>배포 시간을 최대 5분에서 약 100초로 단축</strong></p>
+                            <p class="project-tags">Kotlin · Spring Boot · Python · FastAPI</p>
+                        </div>
+                    </article>
+                    <article class="portfolio-card">
+                        <div class="project-art art-hear" aria-hidden="true">
+                            <strong>Hear</strong>
+                            <small>AI DIARY SERVICE</small>
+                        </div>
+                        <div class="card-copy">
+                            <h3><a href="../hear.html">Hear</a></h3>
+                            <p>AI와 대화하며 하루를 돌아보고 일기를 남기는 서비스</p>
+                            <p class="project-result"><strong>재현 실험에서 DB 커넥션 점유 시간 p95 약 99.6% 감소</strong></p>
+                            <p class="project-tags">Kotlin · Spring Boot · PostgreSQL · Redis</p>
+                        </div>
+                    </article>
                 </div>
             </section>
             <section class="section" id="contact">
-                <h2 lang="en">Contact</h2>
+                <h2 lang="en">Contact.</h2>
                 <div>
                     <ul class="contact-links">
-                        <li><a class="button" href="mailto:waterfail12@naver.com">waterfail12@naver.com</a></li>
-                        <li><a class="button" href="https://github.com/kusuri12-09">GitHub</a></li>
-                        <li><a class="button" href="../index.html">포트폴리오</a></li>
+                        <li><button class="button copy-email" type="button" aria-label="이메일 주소 복사: waterfail12@naver.com">waterfail12@naver.com <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1" /><path d="M3 10V4a1 1 0 0 1 1-1h6" /></svg></button></li>
+                        <li><a class="button" href="https://github.com/kusuri12-09"><img src="../assets/github.svg" width="16" height="16" alt="" /> GitHub <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg></a></li>
+                        <li><a class="button" href="https://www.linkedin.com/in/kusuri12"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2" fill="currentColor" /><path fill="var(--paper)" d="M3 6h2v7H3zm1-3a1.15 1.15 0 1 0 0 2.3A1.15 1.15 0 0 0 4 3zm3 3h2v1c.4-.7 1.1-1.1 2-1.1 1.5 0 2.3 1 2.3 2.7V13h-2V9c0-.9-.4-1.3-1-1.3-.8 0-1.3.6-1.3 1.5V13H7z" /></svg> LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" /></svg></a></li>
                     </ul>
                 </div>
             </section>
@@ -331,7 +585,26 @@
             </div>
         </footer>
         <a class="button back-to-top" href="#top" aria-label="맨 위로"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 13V3M3 8l5-5 5 5" /></svg></a>
+        <div class="copy-toast" role="status"></div>
         <script>
+            const copyEmail = document.querySelector(".copy-email");
+            const copyToast = document.querySelector(".copy-toast");
+            let toastTimeout;
+
+            copyEmail.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(copyEmail.textContent.trim());
+                    copyToast.textContent = "복사되었습니다";
+                } catch {
+                    copyToast.textContent = "복사할 수 없습니다";
+                }
+
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    copyToast.textContent = "";
+                }, 2500);
+            });
+
             const tickerToggle = document.querySelector(".ticker-toggle");
             tickerToggle.addEventListener("click", () => {
                 const isPaused = tickerToggle.getAttribute("aria-pressed") === "true";
