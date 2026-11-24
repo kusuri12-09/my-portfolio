@@ -184,6 +184,7 @@ footer {
 .hero-line {
   position: relative;
   color: var(--ink);
+  background-color: rgba(79, 70, 229, 0.3);
 }
 .hero-line:after {
   content: "";
@@ -1429,6 +1430,7 @@ footer {
 }
 
 .hero h1 strong {
+  color: var(--blue);
   font-size: 1.5em;
   letter-spacing: 0.03em;
   font-weight: 750;
