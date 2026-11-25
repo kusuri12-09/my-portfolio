@@ -18,17 +18,17 @@ async function main() {
         const element = document.querySelector(selector);
         if (!element) throw new Error(`Missing PDF section: ${selector}`);
         const copy = element.cloneNode(true);
-        copy.querySelectorAll('.socials button,.copy-status,.back-link').forEach(node => node.remove());
+        copy.querySelectorAll('.back-link,a[download],.detail-summary').forEach(node => node.remove());
         return copy.outerHTML;
       }), selectors);
     }
-    const [about, skills, projects, contact] = await extract('index.html', ['#about', '#skills', '#projects', '#contact']);
+    const [about, projects, contact] = await extract('index.html', ['#about', '#projects', '#contact']);
     const details = [];
     for (const file of ['entrydsm.html', 'modev.html', 'hear.html']) {
       const [hero, article] = await extract(file, ['.detail-hero', '.article']);
       details.push(`<section class="pdf-project">${hero}${article}</section>`);
     }
-    const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><base href="${base}"><title>국승리 포트폴리오</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pdf.css"></head><body><main>${about}${skills}${projects}${details.join('')}${contact}</main></body></html>`;
+    const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><base href="${base}"><title>국승리 포트폴리오</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="pdf.css"></head><body><main>${about}${projects}${details.join('')}${contact}</main></body></html>`;
     await fs.mkdir(path.join(root, 'output'), { recursive: true });
     await page.setContent(html, { waitUntil: 'networkidle' });
     await page.evaluate(async () => {
@@ -47,7 +47,7 @@ async function main() {
       ending.className = 'pdf-ending';
       const lastArticle = [...document.querySelectorAll('.pdf-project .article')].at(-1);
       const contact = document.querySelector('.contact');
-      const finalSections = [...lastArticle.querySelectorAll(':scope > .pdf-section')].slice(-2);
+      const finalSections = [...lastArticle.querySelectorAll(':scope > .pdf-section')].slice(-1);
       finalSections.forEach(section => ending.appendChild(section));
       ending.appendChild(contact);
       lastArticle.appendChild(ending);
@@ -65,6 +65,7 @@ async function main() {
     });
     const output = path.join(root, 'output', '국승리-포트폴리오.pdf');
     await page.pdf({ path: output, format: 'A4', printBackground: true, preferCSSPageSize: true });
+    await fs.copyFile(output, path.join(root, 'assets', 'portfolio.pdf'));
     console.log(output);
   } finally {
     if (browser) await browser.close();
