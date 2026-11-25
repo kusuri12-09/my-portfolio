@@ -49,6 +49,7 @@
         <p class="detail-description">
           대덕소프트웨어마이스터고등학교만의 온라인 원서 접수 시스템
         </p>
+
         <div class="detail-meta">
           <p>팀 프로젝트 (5명, Backend 2, Frontend 3)</p>
         </div>
@@ -78,10 +79,10 @@
         <aside class="toc">
           <span class="eyebrow">CONTENTS</span>
           <nav aria-label="프로젝트 목차">
-            <a href="#section-1">기술 스택</a><a href="#section-2">주요 기능</a
-            ><a href="#section-3">내가 맡은 역할</a
-            ><a href="#section-4">문제 해결</a
-            ><a href="#section-5">프로젝트 결과</a><a href="#section-6">회고</a>
+            <a href="#feature">주요 기능</a
+            ><a href="#role">내가 맡은 역할</a
+            ><a href="#troubleshooting">문제 해결</a
+            ><a href="#result">프로젝트 결과</a>
           </nav>
         </aside>
         <article class="article">
@@ -89,111 +90,12 @@
             대덕소프트웨어마이스터고등학교만의 온라인 원서 접수 시스템
           </blockquote>
           <p>
-            대덕소프트웨어마이스터고등학교는 10년이라는 기간동안 Entry의
-            시스템을 이용해 온라인으로 원서를 접수해왔습니다. 전국 각지에서
-            입학을 희망하는 지원자들이 먼 길 오지 않고 원서를 지원할 수 있게
-            도와줍니다.
+            EntryDSM은 대덕소프트웨어마이스터고등학교의 온라인 입학 원서 접수 시스템입니다.
+            지원자는 학교에 방문하지 않고 원서를 제출하고, 선생님은 접수된 원서를 웹에서 관리할 수 있습니다.
           </p>
-          <p>
-            지원자 뿐만 아니라 선생님들의 업무도 함께 줄어들었습니다. 수기로
-            원서를 관리하는 방식에서, EntryDSM 서비스를 통해 웹에서 원서를
-            관리할 수 있습니다.
-          </p>
-          <h2 id="section-1">기술 스택</h2>
-          <div class="skill-icons project-stack">
-            <span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Kotlin"
-              title="Kotlin"
-              ><img
-                src="assets/kotlin-reference.png"
-                alt="Kotlin"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Spring Boot"
-              title="Spring Boot"
-              ><img
-                src="assets/spring.svg"
-                alt="Spring Boot"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Resilience4j"
-              title="Resilience4j"
-              ><img
-                src="assets/resilience4j.svg"
-                alt="Resilience4j"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="MySQL"
-              title="MySQL"
-              ><img
-                src="assets/mysql.svg"
-                alt="MySQL"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Redis"
-              title="Redis"
-              ><img
-                src="assets/redis.svg"
-                alt="Redis"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="bazel"
-              title="bazel"
-              ><img
-                src="assets/bazel.svg"
-                alt="bazel"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Docker"
-              title="Docker"
-              ><img
-                src="assets/docker.svg"
-                alt="Docker"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="GitHub Actions"
-              title="GitHub Actions"
-              ><img
-                src="assets/githubactions.svg"
-                alt="GitHub Actions"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="AWS EC2/S3"
-              title="AWS EC2/S3"
-              ><img
-                src="assets/amazonwebservices.svg"
-                alt="AWS EC2/S3"
-                width="36"
-                height="36"
-            /></span>
-          </div>
-          <h2 id="section-2">주요 기능</h2>
+
+          <div class="tags"><span>Kotlin</span><span>Spring Boot</span><span>Resilience4j</span><span>MySQL</span><span>Redis</span><span>bazel</span><span>Docker</span><span>GitHub Actions</span><span>AWS EC2/S3</span></div>
+          <h2 id="feature">주요 기능</h2>
           <ul>
             <li>
               <strong>온라인 입학 원서 접수: </strong>지원자가 웹에서 입학
@@ -208,7 +110,7 @@
               관리하는 기능
             </li>
           </ul>
-          <h2 id="section-3">내가 맡은 역할</h2>
+          <h2 id="role">내가 맡은 역할</h2>
           <ul>
             <li><strong>아키텍처 분석 및 문서화</strong></li>
             <li class="subitem">
@@ -243,7 +145,7 @@
               이어받아 배포와 담당 서비스 관리를 수행했습니다.
             </li>
           </ul>
-          <h2 id="section-4">문제 해결</h2>
+          <h2 id="troubleshooting">문제 해결</h2>
           <blockquote>
             여러 서비스에 흩어진 원서 업무를 Application으로 통합
           </blockquote>
@@ -306,7 +208,7 @@
               #379</a
             >
           </p>
-          <h2 id="section-5">프로젝트 결과</h2>
+          <h2 id="result">프로젝트 결과</h2>
           <ul>
             <li>
               원서 조회·전형·통계·일정·문서 생성을 Application 서비스로 통합
@@ -323,21 +225,7 @@
               덮어쓰기 방지
             </li>
           </ul>
-          <h2 id="section-6">회고</h2>
-          <p>
-            원서 업무를 Application으로 옮기면서, 기존 API 주소와 이미 발급된
-            다운로드 링크를 어떻게 유지할지 함께 고민했습니다. 백엔드 구조를
-            바꿀 때는 새 구조에서 코드가 잘 동작하는지와 함께, 관리자 화면에서
-            쓰던 기능을 그대로 이용할 수 있는지도 확인해야 한다는 걸 배웠습니다.
-          </p>
-          <p>
-            지원자 상태 동기화를 구현할 때는 상태를 저장한 뒤 이벤트 발행에
-            실패하는 경우와, 늦게 도착한 이벤트가 최신 상태를 덮어쓰는 경우를
-            살펴봤습니다. 이후로는 서비스 간에 데이터를 전달하는 기능을 설계할
-            때, 전달이 중간에 끊기거나 같은 이벤트가 다시 들어와도 최종 상태가
-            올바른지부터 확인합니다.
-          </p>
-        </article>
+          </article>
       </div>
       <a class="next-project" href="modev.html"
         ><div>
@@ -355,25 +243,21 @@
         <div class="contact-grid">
           <h2>함께 일할 기회를<br />기다립니다<span class="blue">.</span></h2>
           <div class="contact-links">
-            <a href="mailto:waterfail12@naver.com"
-              >waterfail12@naver.com <span>↗</span></a
-            >
+            <div class="contact-email"><span>waterfail12@naver.com</span><a href="mailto:waterfail12@naver.com" aria-label="이메일 보내기">↗</a></div>
             <div class="socials">
               <a
                 href="https://github.com/kusuri12-09"
                 target="_blank"
                 rel="noopener noreferrer"
-                >GitHub ↗</a
+                ><img src="assets/github.svg" alt="" width="16" height="16" />GitHub ↗</a
               ><a
                 href="http://www.linkedin.com/in/kusuri12"
                 target="_blank"
                 rel="noopener noreferrer"
-                >LinkedIn ↗</a
-              ><button class="copy-email" data-email="waterfail12@naver.com">
-                이메일 복사
-              </button>
-            </div>
-            <p class="copy-status" role="status" aria-live="polite"></p>
+                ><img src="assets/linkedin.svg" alt="" width="16" height="16" />LinkedIn ↗</a
+              >
+            <a href="assets/portfolio.pdf" download="국승리-포트폴리오.pdf"><img src="assets/printer.svg" alt="" width="16" height="16" />PDF 다운로드 ↓</a></div>
+
           </div>
         </div>
       </section>

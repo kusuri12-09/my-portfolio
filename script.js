@@ -18,16 +18,6 @@ document.addEventListener('keydown', (event) => {
     menuButton.focus();
   }
 });
-document.querySelector('.copy-email')?.addEventListener('click', async (event) => {
-  const button = event.currentTarget;
-  const status = document.querySelector('.copy-status');
-  try {
-    await navigator.clipboard.writeText(button.dataset.email);
-    status.textContent = '이메일 주소를 복사했습니다.';
-  } catch {
-    status.textContent = '복사할 이메일: ' + button.dataset.email;
-  }
-});
 const tocLinks = [...document.querySelectorAll('.toc a')];
 const headings = tocLinks.map(link => document.querySelector(link.getAttribute('href')));
 if (headings.length) {

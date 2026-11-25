@@ -16,8 +16,6 @@ html {
   scroll-padding-top: 110px;
 }
 body {
-  -webkit-user-select: none;
-  user-select: none;
   margin: 0;
   background: var(--bg);
   color: var(--ink);
@@ -29,6 +27,28 @@ body {
     sans-serif;
   letter-spacing: -0.025em;
   line-height: 1.65;
+}
+.header,
+button,
+img,
+svg,
+.hero-actions,
+.hero-bottom,
+.toc,
+.project-art,
+.text-link,
+.back-link,
+.next-project,
+.back-to-top,
+.skill-icon,
+.art-arrow,
+.next-arrow,
+.contact-email a {
+  -webkit-user-select: none;
+  user-select: none;
+}
+img {
+  -webkit-user-drag: none;
 }
 a {
   color: inherit;
@@ -70,7 +90,9 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(248, 249, 250, 0.96);
+  background: rgba(248, 249, 250, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
 .nav-wrap {
@@ -176,7 +198,7 @@ footer {
   line-height: 1.27;
   letter-spacing: -0.055em;
   margin: 0;
-  font-weight: 650;
+  font-weight: 400;
 }
 .hero h1 > span:first-child {
   font-size: 0.86em;
@@ -184,7 +206,7 @@ footer {
 .hero-line {
   position: relative;
   color: var(--ink);
-  background-color: rgba(79, 70, 229, 0.3);
+  font-weight: 700;
 }
 .hero-line:after {
   content: "";
@@ -366,7 +388,7 @@ footer {
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -0.05em;
-  margin: 12px 0 7px;
+  margin: 20px 0 12px;
   width: 100%;
 }
 .project-info h3 a {
@@ -375,24 +397,34 @@ footer {
   align-items: center;
 }
 .project-info h3 span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 25px;
   font-weight: 300;
 }
+.project-info h3 small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
 .project-description {
-  font-size: 15px;
+  font-size: 13px;
+  color: var(--muted);
   line-height: 1.6;
-  margin: 0 0 8px;
+  margin: 0 0 14px;
   word-break: keep-all;
 }
 .team {
-  font-size: 11px;
-  color: var(--muted);
-  margin: 0 0 18px;
+  font-size: 17px;
+  color: var(--ink);
+  margin: 0 0 28px;
 }
 .project-result {
   border-left: 2px solid var(--blue);
   padding-left: 13px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 .result-label {
   font-size: 10px;
@@ -415,6 +447,10 @@ footer {
   border: 1px solid var(--line);
   border-radius: 3px;
   color: #535a61;
+}
+.article .tags span {
+  font-size: 12px;
+  padding: 5px 12px;
 }
 .text-link {
   font-size: 12px;
@@ -543,7 +579,7 @@ footer {
   font-weight: 600;
   margin: 0;
 }
-.contact-links > a {
+.contact-email {
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -552,8 +588,15 @@ footer {
   border-bottom: 1px solid var(--line);
   letter-spacing: -0.03em;
 }
-.contact-links > a:hover {
+.contact-email a:hover {
   color: var(--blue);
+}
+.quiet-link,
+.about-person a,
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 .socials {
   display: flex;
@@ -562,22 +605,7 @@ footer {
   margin-top: 18px;
   font-size: 11px;
 }
-.copy-email {
-  background: none;
-  border: 0;
-  margin-left: auto;
-  padding: 0;
-  font-size: 11px;
-  color: var(--muted);
-}
-.copy-status {
-  font-size: 11px;
-  color: var(--muted);
-  min-height: 18px;
-  margin: 8px 0 0;
-}
 footer {
-  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   font-size: 10px;
@@ -767,7 +795,8 @@ footer {
   font-size: 54px;
   font-weight: 200;
 }
-.next-project:hover .next-arrow {
+.next-project:is(:hover, :focus-visible) h2,
+.next-project:is(:hover, :focus-visible) .next-arrow {
   color: var(--blue);
 }
 @media (min-width: 1500px) {
@@ -862,14 +891,14 @@ footer {
     font-size: 28px;
   }
   .project-description {
-    font-size: 14px;
+    font-size: 12px;
   }
   .project-meta {
     flex-wrap: wrap;
     gap: 3px;
   }
   .team {
-    font-size: 10px;
+    font-size: 16px;
   }
   .skill-grid {
     grid-template-columns: 1fr 1fr;
@@ -905,7 +934,7 @@ footer {
   .contact h2 {
     font-size: 32px;
   }
-  .contact-links > a {
+  .contact-email {
     font-size: 24px;
   }
   .detail h1 {
@@ -1095,10 +1124,10 @@ footer {
     font-size: 28px;
   }
   .project-description {
-    font-size: 14px;
+    font-size: 12px;
   }
   .team {
-    font-size: 10px;
+    font-size: 16px;
     margin-top: 4px;
   }
   .project-result {
@@ -1107,7 +1136,11 @@ footer {
   .project-result p {
     font-size: 13px;
   }
-  .text-link {
+  .article .tags span {
+  font-size: 12px;
+  padding: 5px 12px;
+}
+.text-link {
     padding-top: 18px;
   }
   .skill-grid {
@@ -1166,14 +1199,11 @@ footer {
   .contact h2 {
     font-size: 29px;
   }
-  .contact-links > a {
+  .contact-email {
     font-size: 20px;
   }
   .socials {
     gap: 20px;
-    font-size: 10px;
-  }
-  .copy-email {
     font-size: 10px;
   }
   .detail-hero {
@@ -1263,7 +1293,6 @@ footer {
   .hero-actions,
   .toc,
   .next-project,
-  .copy-email,
   footer {
     display: none;
   }
@@ -1433,7 +1462,7 @@ footer {
   color: var(--blue);
   font-size: 1.5em;
   letter-spacing: 0.03em;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .art-entrydsm:before {
@@ -1574,7 +1603,8 @@ footer {
 .project-info h3 a {
   transition: color 0.25s ease;
 }
-.project-info h3 a:is(:hover, :focus-visible) {
+.project-info h3 a:is(:hover, :focus-visible),
+.project-info h3 a:is(:hover, :focus-visible) small {
   color: var(--blue);
 }
 @media (prefers-reduced-motion: reduce) {

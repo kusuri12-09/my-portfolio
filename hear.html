@@ -49,6 +49,7 @@
         <p class="detail-description">
           AI와 대화하며 하루를 돌아보고, 일기로 남기는 AI 다이어리 서비스
         </p>
+
         <div class="detail-meta">
           <p>
             팀 프로젝트 (7명, Backend 1, Frontend 2, AI-Engineer 3, Web-Design
@@ -81,10 +82,10 @@
         <aside class="toc">
           <span class="eyebrow">CONTENTS</span>
           <nav aria-label="프로젝트 목차">
-            <a href="#section-1">기술 스택</a><a href="#section-2">주요 기능</a
-            ><a href="#section-3">내가 맡은 역할</a
-            ><a href="#section-4">문제 해결</a
-            ><a href="#section-5">프로젝트 결과</a><a href="#section-6">회고</a>
+            <a href="#feature">주요 기능</a
+            ><a href="#role">내가 맡은 역할</a
+            ><a href="#troubleshooting">문제 해결</a
+            ><a href="#result">프로젝트 결과</a>
           </nav>
         </aside>
         <article class="article">
@@ -96,81 +97,9 @@
             서비스입니다. 일기에 담긴 감정을 월간 통계로 보여주고, AI의 리포트로
             한 달의 기록을 돌아볼 수 있습니다.
           </p>
-          <h2 id="section-1">기술 스택</h2>
-          <div class="skill-icons project-stack">
-            <span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Kotlin"
-              title="Kotlin"
-              ><img
-                src="assets/kotlin-reference.png"
-                alt="Kotlin"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Spring Boot"
-              title="Spring Boot"
-              ><img
-                src="assets/spring.svg"
-                alt="Spring Boot"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="PostgreSQL"
-              title="PostgreSQL"
-              ><img
-                src="assets/postgresql.svg"
-                alt="PostgreSQL"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Redis"
-              title="Redis"
-              ><img
-                src="assets/redis.svg"
-                alt="Redis"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="Docker"
-              title="Docker"
-              ><img
-                src="assets/docker.svg"
-                alt="Docker"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="GitHub Actions"
-              title="GitHub Actions"
-              ><img
-                src="assets/githubactions.svg"
-                alt="GitHub Actions"
-                width="36"
-                height="36" /></span
-            ><span
-              class="skill-icon"
-              tabindex="0"
-              data-label="AWS EC2/S3"
-              title="AWS EC2/S3"
-              ><img
-                src="assets/amazonwebservices.svg"
-                alt="AWS EC2/S3"
-                width="36"
-                height="36"
-            /></span>
-          </div>
-          <h2 id="section-2">주요 기능</h2>
+
+          <div class="tags"><span>Kotlin</span><span>Spring Boot</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>GitHub Actions</span><span>AWS EC2/S3</span></div>
+          <h2 id="feature">주요 기능</h2>
           <ul>
             <li>
               <strong>AI 채팅 및 일기 생성</strong>: AI와 하루를 회고하고, 대화
@@ -185,7 +114,7 @@
               감정 통계와 월간 AI 리포트 제공
             </li>
           </ul>
-          <h2 id="section-3">내가 맡은 역할</h2>
+          <h2 id="role">내가 맡은 역할</h2>
           <ul>
             <li><strong>백엔드 구조 설계 및 구현</strong></li>
             <li class="subitem">
@@ -215,7 +144,7 @@
               이벤트 처리 시점을 구성했습니다.
             </li>
           </ul>
-          <h2 id="section-4">문제 해결</h2>
+          <h2 id="troubleshooting">문제 해결</h2>
           <blockquote>
             외부 AI 서버의 장애가 DB 자원 점유로 이어지지 않도록 트랜잭션 범위
             분리
@@ -297,7 +226,7 @@
               데이터 변경은 하나의 트랜잭션으로 유지했습니다.
             </li>
           </ul>
-          <h2 id="section-5">프로젝트 결과</h2>
+          <h2 id="result">프로젝트 결과</h2>
           <ul>
             <li>
               <strong>DB 커넥션 점유 시간 p95 약 99.6% 감소</strong> — 장애 재현
@@ -310,22 +239,7 @@
             <li>일기 이벤트 기반 통계 갱신 및 커밋 전 처리 적용</li>
             <li>외부 API 변경에 대응할 수 있도록 연동 영역을 Adapter로 분리</li>
           </ul>
-          <h2 id="section-6">회고</h2>
-          <p>
-            AI 서버의 응답이 늦거나 요청이 실패해도 DB 커넥션을 계속 점유하지
-            않도록, 외부 호출과 DB 저장의 트랜잭션 범위를 분리했습니다. 반면
-            일기와 사용자 통계는 한쪽만 저장되면 데이터가 어긋나므로, 같은
-            트랜잭션 안에서 함께 저장했습니다.
-          </p>
-          <p>
-            이 과정에서 코드의 책임을 나눈다고 해서 트랜잭션까지 분리했다간
-            데이터 간의 불일치가 생길 수 있다는 것을 깨달았습니다. 일기 서비스가
-            통계의 세부 구현을 몰라도 되도록 구조를 설계하는 것과, 두 데이터가
-            함께 저장되도록 보장하는 것은 별개의 문제였습니다. 이후에는 결합도를
-            낮추는 것뿐 아니라, 함께 성공하거나 실패해야 하는 변경의 범위도
-            살펴보게 됐습니다.
-          </p>
-        </article>
+          </article>
       </div>
       <a class="next-project" href="entrydsm.html"
         ><div>
@@ -343,25 +257,21 @@
         <div class="contact-grid">
           <h2>함께 일할 기회를<br />기다립니다<span class="blue">.</span></h2>
           <div class="contact-links">
-            <a href="mailto:waterfail12@naver.com"
-              >waterfail12@naver.com <span>↗</span></a
-            >
+            <div class="contact-email"><span>waterfail12@naver.com</span><a href="mailto:waterfail12@naver.com" aria-label="이메일 보내기">↗</a></div>
             <div class="socials">
               <a
                 href="https://github.com/kusuri12-09"
                 target="_blank"
                 rel="noopener noreferrer"
-                >GitHub ↗</a
+                ><img src="assets/github.svg" alt="" width="16" height="16" />GitHub ↗</a
               ><a
                 href="http://www.linkedin.com/in/kusuri12"
                 target="_blank"
                 rel="noopener noreferrer"
-                >LinkedIn ↗</a
-              ><button class="copy-email" data-email="waterfail12@naver.com">
-                이메일 복사
-              </button>
-            </div>
-            <p class="copy-status" role="status" aria-live="polite"></p>
+                ><img src="assets/linkedin.svg" alt="" width="16" height="16" />LinkedIn ↗</a
+              >
+            <a href="assets/portfolio.pdf" download="국승리-포트폴리오.pdf"><img src="assets/printer.svg" alt="" width="16" height="16" />PDF 다운로드 ↓</a></div>
+
           </div>
         </div>
       </section>
